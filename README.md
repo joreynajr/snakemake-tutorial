@@ -101,6 +101,22 @@ Comment: I just want to say that I think analyzing each sample independently is 
 
 Tip: you can used `mkdir -P <dir1>/<dir2>/<dir3>/.../<dirN>` to create a whole directory branch. 
 
+## Other Important Features
+- Accessing wildcards within shell 
+- Using config.yaml to set tool paths and other global variables 
+- Setup a profile to faciliate the use of qsub
+- Specifying the qsub resources within the resource 
+- Labeling files as temporary for automatics removal downstream
+- Labeling files as protected to assign read only permissions
+- Using functions within a Snakefile to gather input files
+- Integrating Jupyter notebooks by loading the Snakemake package 
+- Print a graph which represents the connections between your rules 
+- Benchmarking a command with internal Snakemake mechanism
+- Rule inheritance for generalizability of rules
+- Using conda environments (a bit finicky but maybe it works well now?)
+- Using checkpoints for dynamically produces files
+- And probably other stuff that I haven't explored just yet!!!
+
 ## Other Resources 
 - Understanding Snakemake - https://vincebuffalo.com/blog/2020/03/04/understanding-snakemake.html
 - More Resources (from ReadTheDocs) - https://snakemake.readthedocs.io/en/stable/project_info/more_resources.html
