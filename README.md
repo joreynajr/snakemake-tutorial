@@ -18,7 +18,7 @@ https://snakemake.readthedocs.io/en/stable/getting_started/installation.html
 
 ## Rules are the Basic Building Blocks
 
-The most important concept of Snakemake is the rule which defines the inputs, outputs, parameters, logs, resources, etc. Below is an example rule where we are taking a dummy BEDPE file with chrA, startA, endA, chrB, startB, endB, and p-values and extract those interactions with a significant p-value (p-value < 0.05). You can go ahead and copy and paste this rule into your Snakemake file(s).
+The most important concept of Snakemake is the rule which defines the inputs, outputs, parameters, logs, resources, etc. Below is an example rule where we are taking a dummy BEDPE file with chrA, startA, endA, chrB, startB, endB, and p-values and extract those interactions with a significant p-value (p-value < 0.05). You can go ahead and copy and paste this rule into your Snakemake file(s) (within `workflow/Snakefile`).
 ```
 rule extract_significant_loops:
 	input:
