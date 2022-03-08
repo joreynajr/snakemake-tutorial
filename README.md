@@ -26,7 +26,7 @@ rule extract_significant_loops:
 	output:
 		'results/loops.sig.bed'
 	log:
-		'results/loops.{sample}.log'
+		'results/loops.log'
 	shell:
 		"""
 			awk '{{if($7 < 0.05) print $0}}' {input} > {output} 2> {log}
