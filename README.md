@@ -88,19 +88,6 @@ Johann Koster, the creator of Snakemake, highly recommends using a particular wo
 	- scripts - directory to store all scripts needed in your rules
 	- Snakefile - main Snakemake file
 
-## Specifics for HiChIP-DB Project
-My idea is to start the Snakemake Rules from HiCPro output. The reason for this is that HiCPro is also a workflow type of pipeline but uses Make instead of Snakemake and it's going to be messy to combine the two especially when you are first learning Snakemake. Once you have run HiC-Pro you can use those files within different Snakemake rules. As you'll see after cloning this repository you will have a particular directory tree structure that matches the one I mentioned above.
-
-One last thing I want to mention is where and how to store the results. There are lots of ways of going about this but since this is a group effort I think it's best to be on the same page. The most important part is to use the directory structure described above and, when generating **results**, save the results using the naming scheme that Ferhat suggested. For example, you'll be running peak calling followed by loop calling so it might look like this:
-
-<img src="https://user-images.githubusercontent.com/14253227/157333623-4d7e6a2e-2357-4343-b4e2-288169e42de9.png" alt="drawing" width="300"/>
-
-Right now you can see the different analyses done for the heart sample and depending on the different analyses you'll use some particular naming scheme. This example is very basic and needs to fit Ferhat's suggestions but you'll be doing something like this. We can talk more about it if you want and write some documentation here that describes our naming conventions more. 
-
-Comment: I just want to say that I think analyzing each sample independently is very important because bioinformatics programming errors can come as much from the coding side of things as well as the data side of things. By analyzing each sample in it's own folder you can better track and debug what step failedd for a particular sample. 
-
-Tip: you can used `mkdir -P <dir1>/<dir2>/<dir3>/.../<dirN>` to create a whole directory branch. 
-
 ## Other Important Features
 - Accessing wildcards within shell 
 - Using config.yaml to set tool paths and other global variables 
@@ -120,6 +107,19 @@ Tip: you can used `mkdir -P <dir1>/<dir2>/<dir3>/.../<dirN>` to create a whole d
 ## Other Resources 
 - Understanding Snakemake - https://vincebuffalo.com/blog/2020/03/04/understanding-snakemake.html
 - More Resources (from ReadTheDocs) - https://snakemake.readthedocs.io/en/stable/project_info/more_resources.html
+
+## Specifics for HiChIP-DB Project
+My idea is to start the Snakemake Rules from HiCPro output. The reason for this is that HiCPro is also a workflow type of pipeline but uses Make instead of Snakemake and it's going to be messy to combine the two especially when you are first learning Snakemake. Once you have run HiC-Pro you can use those files within different Snakemake rules. As you'll see after cloning this repository you will have a particular directory tree structure that matches the one I mentioned above.
+
+One last thing I want to mention is where and how to store the results. There are lots of ways of going about this but since this is a group effort I think it's best to be on the same page. The most important part is to use the directory structure described above and, when generating **results**, save the results using the naming scheme that Ferhat suggested. For example, you'll be running peak calling followed by loop calling so it might look like this:
+
+<img src="https://user-images.githubusercontent.com/14253227/157333623-4d7e6a2e-2357-4343-b4e2-288169e42de9.png" alt="drawing" width="300"/>
+
+Right now you can see the different analyses done for the heart sample and depending on the different analyses you'll use some particular naming scheme. This example is very basic and needs to fit Ferhat's suggestions but you'll be doing something like this. We can talk more about it if you want and write some documentation here that describes our naming conventions more. 
+
+Comment: I just want to say that I think analyzing each sample independently is very important because bioinformatics programming errors can come as much from the coding side of things as well as the data side of things. By analyzing each sample in it's own folder you can better track and debug what step failedd for a particular sample. 
+
+Tip: you can used `mkdir -P <dir1>/<dir2>/<dir3>/.../<dirN>` to create a whole directory branch. 
 
 
 
