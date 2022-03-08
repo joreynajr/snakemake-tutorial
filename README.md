@@ -66,19 +66,20 @@ You can repeat this Snakemake invocation using the lung sample:
 snakemake --cores 1 results/loops.lung.sig.bed
 ```
 
-## Specifics for HiChIP-DB Project
-My idea is to start the Snakemake Rules from HiCPro output. The reason for this is that HiCPro is also a workflow type of programs but uses Make instead of Snakemake and it's going to be messy to combine the two especially when you are first learning Snakemake. Once you have run HiC-Pro you can use those files within different Snakemake rules. As you'll see after `git clone` of this repository you will have a particular directory tree structure. It might be tricky to use at first but this structure, althought not required, is very recommended by the creator of Snakemake [link](https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#distribution-and-reproducibility). There are many files + folders but the main idea is to write your rules under `Snakefile` and `workflow/rules/`, scripts under the `workflow/scripts/`, setup the configuation file with softwares we need (`config/config.yaml`) and lastly set up a profile file to run rules with qsub. In the next section you'll see what directory structure you need and you can go ahead and build it.
-
-Tip: you can used `mkdir -P <dir1>/<dir2>/<dir3>/.../<dirN>` to create a whole directory branch. 
-
 ##  Recommended Directory Tree
-<img src="https://user-images.githubusercontent.com/14253227/157296331-d92bda4a-0215-4dc3-b3a4-742707bf176d.png" alt="drawing" width="200"/>
+Johann Koster, the creator of Snakemake, highly recommends using a particular workflow template and I'll go over that here (you can find out more by visiting the [link](https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#distribution-and-reproducibility)). It might be tricky to use at first but this structure facilitates the sharing of your pipeline with others. I would also like to note that I've added a few extra directories that are compatible with Johann's recommendation. So, there are many files + folders but the main idea is to write your rules under `Snakefile` and `workflow/rules/`, scripts under the `workflow/scripts/`, setup the configuation file with softwares we need (`config/config.yaml`) and lastly set up a profile file to run rules with qsub.
+
+<img src="https://user-images.githubusercontent.com/14253227/157336834-59042b4f-e361-4b3f-b7a7-a124f05c980b.png" alt="drawing" width="200"/>
 
 - config - directory to store configuration and samplesheets
 	- config.yaml - configuration path which is recommended for Snakemake 
 - docs - directory to store different manual types of documents which are not produced/used by Snakemake directly
 - README.md - information about this tutorial
 - results - directory for all results which are output
+	- main - directory with data analyzed per sample
+	- refs - directory with reference files and their derivatives
+	- tests - directory for output of test rules/other
+	- ... (of course you might run into scenarios where you need to add directories, do so with discretion to keep the code as tidy as possible)
 - workflow - directory of all codes
 	- envs - directory with environment files 
 	- notebooks - directory with jupyter notebooks 
@@ -86,6 +87,19 @@ Tip: you can used `mkdir -P <dir1>/<dir2>/<dir3>/.../<dirN>` to create a whole d
 	- reports - directory which lists how to produce Snakemake reports
 	- scripts - directory to store all scripts needed in your rules
 	- Snakefile - main Snakemake file
+
+## Specifics for HiChIP-DB Project
+My idea is to start the Snakemake Rules from HiCPro output. The reason for this is that HiCPro is also a workflow type of pipeline but uses Make instead of Snakemake and it's going to be messy to combine the two especially when you are first learning Snakemake. Once you have run HiC-Pro you can use those files within different Snakemake rules. As you'll see after cloning this repository you will have a particular directory tree structure that matches the one I mentioned above.
+
+One last thing I want to mention is where and how to store the results. There are lots of ways of going about this but since this is a group effort I think it's best to be on the same page. The most important part is to use the directory structure described above and, when generating **results**, save the results using the naming scheme that Ferhat suggested. For example, you'll be running peak calling followed by loop calling so it might look like this:
+
+<img src="https://user-images.githubusercontent.com/14253227/157333623-4d7e6a2e-2357-4343-b4e2-288169e42de9.png" alt="drawing" width="300"/>
+
+Right now you can see the different analyses done for the heart sample and depending on the different analyses you'll use some particular naming scheme. This example is very basic and needs to fit Ferhat's suggestions but you'll be doing something like this. We can talk more about it if you want and write some documentation here that describes our naming conventions more. 
+
+Comment: I just want to say that I think analyzing each sample independently is very important because bioinformatics programming errors can come as much from the coding side of things as well as the data side of things. By analyzing each sample in it's own folder you can better track and debug what step failedd for a particular sample. 
+
+Tip: you can used `mkdir -P <dir1>/<dir2>/<dir3>/.../<dirN>` to create a whole directory branch. 
 
 ## Other Resources 
 - Understanding Snakemake - https://vincebuffalo.com/blog/2020/03/04/understanding-snakemake.html
